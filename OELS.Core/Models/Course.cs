@@ -9,19 +9,19 @@ namespace OELS.Core.Models
         public Language Language { get; set; } = null!;
         public Guid TeacherId { get; set; }
         public User User { get; set; } = null!;
-        public string Title { get; set; } 
-        public string Description { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public CourseLevel Level { get; set; }
         public decimal Price { get; set; }
-        public string Thumbnail_Url { get; set; }
+        public string Thumbnail_Url { get; set; } = string.Empty;
         public bool IsPublished { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
-        public ICollection<Enrollment> Enrollments { get; set; } = new HashSet<Enrollment>();
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
         public ICollection<Payment> Payment { get; set; } = new List<Payment>();
         public ICollection<CourseReview> CourseReviews { get; set; } = new List<CourseReview>();
-        public ICollection<Certificate> Certificates { get; set; } = new HashSet<Certificate>();
+        public ICollection<Certificate> Certificates { get; set; } = new List<Certificate>();
         public ICollection<Section> Sections { get; set; } = new List<Section>();
 
     }

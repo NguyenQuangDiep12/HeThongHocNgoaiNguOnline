@@ -14,7 +14,7 @@ namespace OELS.Core.Models
         public DateTime? UpdatedAt { get; set; }
         public ICollection<Course> Courses { get; set; } = new List<Course>();
         public ICollection<CourseReview> CoursesReviews { get; set; } = new List<CourseReview>();
-        public ICollection<Certificate> Certificates { get; set; } = new HashSet<Certificate>();
+        public ICollection<Certificate> Certificates { get; set; } = new List<Certificate>();
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();
         public ICollection<QuizAttempt> QuizAttempts { get; set; } = new List<QuizAttempt>();

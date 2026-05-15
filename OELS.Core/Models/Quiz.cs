@@ -12,7 +12,7 @@
         public int MaxAttempt {  get; set; }
 
         public ICollection<QuizQuestion> Questions { get; set; } = new List<QuizQuestion>();
-        public ICollection<QuizAttempt> Answers { get; set; } = new HashSet<QuizAttempt>();
+        public ICollection<QuizAttempt> Answers { get; set; } = new List<QuizAttempt>();
         
     }
 }

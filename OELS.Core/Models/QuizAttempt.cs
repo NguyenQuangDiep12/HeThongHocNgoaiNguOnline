@@ -12,6 +12,6 @@
         public bool IsPassed { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime SubmittedAt { get; set; }
-        public ICollection<QuizAnswer> Answers { get; set; } = new HashSet<QuizAnswer>();
+        public ICollection<QuizAnswer> Answers { get; set; } = new List<QuizAnswer>();
     }
 }
