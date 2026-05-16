@@ -11,7 +11,7 @@ namespace OELS.Core.Models
         public Course Course { get; set; } = null!;
         public EnrollmentStatus Status { get; set; }
         public DateTime EnrolledAt { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
         public DateTime ExpiresAt { get; set; }
         public DateTime CreatedAt { get; set; }
     }

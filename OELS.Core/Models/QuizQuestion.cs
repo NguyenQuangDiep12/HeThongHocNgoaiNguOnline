@@ -9,7 +9,7 @@ namespace OELS.Core.Models
         public Quiz Quiz { get; set; } = null!;
         public string Question { get; set; } = string.Empty;
         public QuestionType QuestionType { get; set; }
-        public int Point { get; set; }
+        public int? Point { get; set; }
         public ICollection<QuizOption> Options { get; set; } = new List<QuizOption>();
         public ICollection<QuizAnswer> Answers { get; set; } = new List<QuizAnswer>();
     }

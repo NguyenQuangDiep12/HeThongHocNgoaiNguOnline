@@ -15,7 +15,7 @@ namespace OELS.Core.Models
         public decimal Price { get; set; }
         public string Thumbnail_Url { get; set; } = string.Empty;
         public bool IsPublished { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

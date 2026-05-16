@@ -8,7 +8,7 @@
         public Guid LessonId { get; set; }
         public Lesson Lesson { get; set; } = null!;
         public decimal CompletedPercent { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool? IsCompleted { get; set; }
         public DateTime? CompletedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }

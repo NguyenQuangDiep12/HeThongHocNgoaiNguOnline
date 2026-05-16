@@ -8,7 +8,7 @@
         public Guid QuizId { get; set; }
         public Quiz Quiz { get; set; } = null!;
         public int AttemptNumber { get; set; }
-        public decimal Score { get; set; }
+        public int Score { get; set; }
         public bool IsPassed { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime? SubmittedAt { get; set; }

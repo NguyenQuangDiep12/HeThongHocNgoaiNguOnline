@@ -30,7 +30,7 @@ namespace OELS.Repository.Configurations
             builder.HasOne(c => c.User)
                 .WithMany(u => u.Certificates)
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(c => c.Course)
                 .WithMany(c => c.Certificates)

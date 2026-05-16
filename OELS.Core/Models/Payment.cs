@@ -14,7 +14,7 @@ namespace OELS.Core.Models
         public string Transaction_Ref { get; set; } = string.Empty;
         public PaymentMethod PaymentMethod { get; set; }
         public PaymentStatus PaymentStatus { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
         public DateTime PaidAt { get; set; }
         public DateTime CreatedAt { get; set; }
     }

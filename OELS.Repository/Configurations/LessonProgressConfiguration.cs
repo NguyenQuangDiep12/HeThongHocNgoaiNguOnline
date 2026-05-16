@@ -40,7 +40,7 @@ namespace OELS.Repository.Configurations
             builder.ToTable(t =>
             {
                 t.HasCheckConstraint(
-                    "CK_LessonProgress_Percent", "[Percent] >= 0 AND [Percent] <= 100"
+                    "CK_LessonProgress_Percent", "[CompletedPercent] >= 0 AND [CompletedPercent] <= 100"
                 );
             });
         }

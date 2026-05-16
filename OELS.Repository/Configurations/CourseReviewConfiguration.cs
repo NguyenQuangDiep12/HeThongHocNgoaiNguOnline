@@ -37,7 +37,7 @@ namespace OELS.Repository.Configurations
             builder.HasOne(cr => cr.Course)
                 .WithMany(c => c.CourseReviews)
                 .HasForeignKey(cr => cr.CourseId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict); // ngan chan multiple cascade path
         }
     }
 }

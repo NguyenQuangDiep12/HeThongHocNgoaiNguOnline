@@ -41,7 +41,7 @@ namespace OELS.Repository.Configurations
 
             builder.ToTable(t =>
             {
-                t.HasCheckConstraint("CK_QuizAttempt_Score", "[Score >= 0] AND [Score <= 100]");
+                t.HasCheckConstraint("CK_QuizAttempt_Score", "[Score] >= 0 AND [Score] <= 100");
             });
         }
     }

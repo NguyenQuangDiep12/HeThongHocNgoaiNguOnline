@@ -41,7 +41,7 @@ namespace OELS.Repository.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(p => p.Course)
                 .WithMany(c => c.Payments)
-                .HasForeignKey(p => p.UserId) 
+                .HasForeignKey(p => p.CourseId) 
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasIndex(p => new { p.UserId, p.CourseId })
                 .IsUnique();

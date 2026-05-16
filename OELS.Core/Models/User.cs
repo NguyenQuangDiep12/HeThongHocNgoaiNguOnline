@@ -10,7 +10,7 @@ namespace OELS.Core.Models
         public string Password_Hash { get; set; } = string.Empty;
         public string Avatar_Url { get; set; } = string.Empty;
         public Role Role { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public ICollection<Course> Courses { get; set; } = new List<Course>();
