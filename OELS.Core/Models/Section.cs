@@ -2,7 +2,7 @@
 {
     public class Section
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; } = Guid.NewGuid();
         public Guid CourseId { get; set; }
         public Course Course { get; set; } = null!;
         public string Title { get; set; } = string.Empty;

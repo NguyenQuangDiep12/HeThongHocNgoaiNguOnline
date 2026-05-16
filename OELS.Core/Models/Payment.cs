@@ -5,7 +5,7 @@ namespace OELS.Core.Models
 {
     public class Payment 
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; } = Guid.NewGuid();
         public Guid UserId { get; set; }
         public User User { get; set; } = null!;
         public Guid CourseId { get; set; }
@@ -14,6 +14,7 @@ namespace OELS.Core.Models
         public string Transaction_Ref { get; set; } = string.Empty;
         public PaymentMethod PaymentMethod { get; set; }
         public PaymentStatus PaymentStatus { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime PaidAt { get; set; }
         public DateTime CreatedAt { get; set; }
     }

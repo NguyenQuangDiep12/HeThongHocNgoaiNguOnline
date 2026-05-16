@@ -17,7 +17,7 @@ namespace OELS.Repository.Configurations
             builder.ToTable("users");
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id)
-                .ValueGeneratedOnAdd();
+                .ValueGeneratedNever();
 
             builder.Property(u => u.FullName)
                 .HasMaxLength(100)
@@ -40,7 +40,31 @@ namespace OELS.Repository.Configurations
             builder.Property(x => x.CreatedAt)
                 .IsRequired()
                 .HasDefaultValueSql("GETUTCDATE()");
-            builder.Property(x => x.UpdatedAt);
+            builder.Property(u => u.IsDeleted)
+                .IsRequired(false)
+                .HasDefaultValue(false);
+            builder.Property(x => x.UpdatedAt)
+                .IsRequired(false);
+
+            builder.HasMany(u => u.QuizAttempts)
+                .WithOne(q => q.User)
+                .HasForeignKey(q => q.UserId);
+
+            builder.HasMany(u => u.Payments)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
+            builder.HasMany(u => u.Enrollments)
+                .WithOne(e => e.User)
+                .HasForeignKey(e => e.UserId);
+            builder.HasMany(u => u.Courses)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.TeacherId);
+            builder.HasMany(u => u.CourseReviews)
+                .WithOne(cr => cr.User)
+                .HasForeignKey(cr => cr.UserId);
+            builder.HasMany(u => u.Certificates)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.UserId);
         }
     }
 }

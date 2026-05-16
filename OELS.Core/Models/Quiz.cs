@@ -2,11 +2,11 @@
 {
     public class Quiz
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; } = Guid.NewGuid();
         public Guid LessonId { get; set; }
-        public Lesson Lesson { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public Lesson Lesson { get; set; } = null!;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public int PassScore { get; set; }
         public int LimitTimeSec { get; set; }
         public int MaxAttempt {  get; set; }
