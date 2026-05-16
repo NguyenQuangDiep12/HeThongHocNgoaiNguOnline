@@ -58,9 +58,6 @@ namespace OELS.Repository.Configurations
             builder.HasMany(c => c.Sections)
                 .WithOne(s => s.Course)
                 .HasForeignKey(s => s.CourseId);
-            builder.HasMany(c => c.Certificates)
-                .WithOne(c => c.Course)
-                .HasForeignKey(c => c.CourseId);
         }
     }
 }

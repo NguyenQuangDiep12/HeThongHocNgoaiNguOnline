@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OELS.Core.Repositories
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
     }
 }

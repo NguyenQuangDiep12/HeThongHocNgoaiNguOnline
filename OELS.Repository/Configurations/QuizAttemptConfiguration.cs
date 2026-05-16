@@ -37,7 +37,7 @@ namespace OELS.Repository.Configurations
             builder.HasOne(qa => qa.Quiz)
                 .WithMany(q => q.Answers)
                 .HasForeignKey(qa => qa.QuizId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable(t =>
             {

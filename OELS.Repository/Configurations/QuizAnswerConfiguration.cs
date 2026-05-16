@@ -33,11 +33,11 @@ namespace OELS.Repository.Configurations
             builder.HasOne(qa => qa.Question)
                 .WithMany(q => q.Answers)
                 .HasForeignKey(qa => qa.QuestionId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.HasOne(qa => qa.SelectedOption)
+                .OnDelete(DeleteBehavior.Restrict); // fix: multiple cascade path
+            builder.HasOne(qa => qa.SelectedOption) // find at: https://www.mssqltips.com/sqlservertip/2733/solving-the-sql-server-multiple-cascade-path-issue-with-a-trigger/
                 .WithMany(so => so.Answers)
                 .HasForeignKey(qa => qa.SelectedOptionId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
