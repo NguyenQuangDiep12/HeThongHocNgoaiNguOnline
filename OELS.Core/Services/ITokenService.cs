@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OELS.Core.Repositories
+namespace OELS.Core.Services
 {
-    public interface IQuizAnswerRepository : IGenericRepository<QuizAnswer>
+    public interface ITokenService
     {
+        string GenerateToken(User user);
     }
 }

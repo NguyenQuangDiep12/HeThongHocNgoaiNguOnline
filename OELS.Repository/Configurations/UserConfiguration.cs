@@ -21,18 +21,19 @@ namespace OELS.Repository.Configurations
 
             builder.Property(u => u.FullName)
                 .HasMaxLength(100)
-                .HasDefaultValue(UtilsFunction.GenerateDefaultName())
+                .HasDefaultValue(UtilsFunction.GenerateDefaultName()) // xu ly gia tri tinh , gia tri dong dung HasDefaultValueSql()
                 .IsRequired();
+
             builder.Property(u => u.Email)
                 .HasMaxLength(255)
                 .IsRequired();
             builder.HasIndex(u => u.Email)
                 .IsUnique();
+
             builder.Property(u => u.Password_Hash)
                 .HasMaxLength (255)
                 .IsRequired();
             builder.Property(u => u.Role)
-                .HasMaxLength(10)
                 .IsRequired()
                 .HasConversion<int>();
             builder.Property(u => u.Avatar_Url)
@@ -58,7 +59,8 @@ namespace OELS.Repository.Configurations
                 .HasForeignKey(e => e.UserId);
             builder.HasMany(u => u.Courses)
                 .WithOne(c => c.User)
-                .HasForeignKey(c => c.TeacherId);
+                .HasForeignKey(c => c.TeacherId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(u => u.CourseReviews)
                 .WithOne(cr => cr.User)
                 .HasForeignKey(cr => cr.UserId);
