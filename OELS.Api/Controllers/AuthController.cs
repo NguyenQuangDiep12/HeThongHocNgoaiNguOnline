@@ -14,24 +14,16 @@ namespace OELS.Api.Controllers
             _authService = authService;
         }
         [HttpGet("login")]
-        public ActionResult<AuthResponseDto> Login(LoginDto request)
+        public async Task<ActionResult<AuthResponseDto>> Login([FromBody] LoginDto request)
         {
-            try
-            {
-                _authService.LoginAsync(request);
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine(ex);   
-            }
-
-            throw new Exception();
-            
+            var result = await _authService.LoginAsync(request);
+            return Ok(result);
         }
         [HttpPost("register")]
-        public ActionResult<AuthResponseDto> Register()
+        public async Task<ActionResult<AuthResponseDto>> Register(RegisterDto request)
         {
-            throw new NotImplementedException();
+            var result = await _authService.RegisterAsync(request);
+            return Ok(result);
         }
     }
 }
