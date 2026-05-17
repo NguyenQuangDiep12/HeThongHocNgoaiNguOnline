@@ -11,17 +11,13 @@ namespace OELS.Core.Repositories
     public interface IUserRepository : IGenericRepository<User>
     {
         Task<User?> GetByEmailAsync(string email);
-        Task<bool> IsEmailExistsAsync(string email);
-        Task<bool> IsTeacherAsync(Guid userId);
-        Task<bool> IsAdminAsync(Guid userId);
         Task<IEnumerable<Course>> GetEnrolledCoursesAsync(Guid userId);
         Task<bool> HasPurchasedCourseAsync(Guid userId, Guid CourseId);
-        Task<decimal> GetLearningProgressAsync(Guid userId);
+        Task<LessonProgress?> GetLessonProgressAsync(Guid userId, Guid LessonId);
         Task<IEnumerable<Certificate>> GetCertificatesAsync(Guid userId);
-        Task<IEnumerable<QuizAttempt>> GetQuizAttemptsAsync(Guid userId);
+        Task<IEnumerable<QuizAttempt>> GetQuizAttemptsAsync(Guid userId, Guid QuizId);
         // Teacher
         Task<IEnumerable<Course>> GetTeacherCoursesAsync(Guid TeacherId);
-        Task<int> GetTotalStudentsAsync(Guid TeacherId);
         Task<decimal> GetTotalRevenueAsync(Guid TeacherId);
 
 

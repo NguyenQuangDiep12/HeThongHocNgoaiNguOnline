@@ -24,64 +24,44 @@ namespace OELS.Repository.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<User> GetByRoleAsync(Role role)
+        public async Task<User?> GetByRoleAsync(Role role)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Role == role);
         }
 
-        public Task<IEnumerable<Certificate>> GetCertificatesAsync(Guid userId)
+        public async Task<IEnumerable<Certificate>> GetCertificatesAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            return (IEnumerable<Certificate>)await _context.Users.Include(u => u.Certificates).Where(u => u.Id == userId).ToListAsync();
         }
 
-        public Task<IEnumerable<Course>> GetEnrolledCoursesAsync(Guid userId)
+        public async Task<IEnumerable<Course>> GetEnrolledCoursesAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            return (IEnumerable<Course>) await _context.Users.Include(u => u.Courses).Where(u => u.Id == userId).ToListAsync();
         }
 
-        public Task<decimal> GetLearningProgressAsync(Guid userId)
+        public async Task<LessonProgress?> GetLessonProgressAsync(Guid userId, Guid LessonId)
         {
-            throw new NotImplementedException();
+            return await _context.LessonsProgresses.FirstOrDefaultAsync(lp => lp.UserId == userId && lp.LessonId == LessonId);
         }
 
-        public Task<IEnumerable<QuizAttempt>> GetQuizAttemptsAsync(Guid userId)
+        public async Task<IEnumerable<QuizAttempt>> GetQuizAttemptsAsync(Guid userId, Guid QuizId)
         {
-            throw new NotImplementedException();
+            return await _context.QuizAttempts.Where(qa => qa.UserId == userId && qa.QuizId == QuizId).ToListAsync();
         }
 
-        public Task<IEnumerable<Course>> GetTeacherCoursesAsync(Guid TeacherId)
+        public async Task<IEnumerable<Course>> GetTeacherCoursesAsync(Guid TeacherId)
         {
-            throw new NotImplementedException();
+            return await _context.Courses.Where(c => c.TeacherId == TeacherId).ToListAsync();
         }
 
-        public Task<decimal> GetTotalRevenueAsync(Guid TeacherId)
+        public async Task<decimal> GetTotalRevenueAsync(Guid TeacherId)
         {
-            throw new NotImplementedException();
+            return await _context.Payments.Where(p => p.UserId == TeacherId).SumAsync(p => p.Amount);
         }
 
-        public Task<int> GetTotalStudentsAsync(Guid TeacherId)
+        public async Task<bool> HasPurchasedCourseAsync(Guid userId, Guid CourseId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> HasPurchasedCourseAsync(Guid userId, Guid CourseId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IsAdminAsync(Guid userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> IsEmailExistsAsync(string email)
-        {
-            return await _context.Users.AnyAsync(u => u.Email == email);
-        }
-
-        public Task<bool> IsTeacherAsync(Guid userId)
-        {
-            throw new NotImplementedException();
+            return await _context.Enrollments.AnyAsync(e => e.UserId == userId && e.CourseId == CourseId);
         }
     }
 }
