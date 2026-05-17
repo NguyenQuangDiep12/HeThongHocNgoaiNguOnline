@@ -46,6 +46,7 @@ namespace OELS.Service.Services
                     FullName = user.FullName,
                     AvatarUrl = user.Avatar_Url,
                     Role = user.Role.ToString(),
+                    CreatedAt = user.CreatedAt,
                 }
             };
         }
@@ -67,7 +68,6 @@ namespace OELS.Service.Services
             {
                 Email = request.Email,
                 FullName = request.FullName,
-                Role = request.Role,
                 Password_Hash = BCrypt.Net.BCrypt.HashPassword(request.Password),
             };
 
@@ -81,11 +81,12 @@ namespace OELS.Service.Services
                 AccessToken = token,
                 User = new UserResponseDto
                 {
+                    Id = newUser.Id,
                     Email = newUser.Email,
                     FullName = newUser.FullName,
                     AvatarUrl=newUser.Avatar_Url,
                     Role = newUser.Role.ToString(),
-                    CreatedAt = DateTime.UtcNow,
+                    CreatedAt = newUser.CreatedAt,
                 }
             };
         }

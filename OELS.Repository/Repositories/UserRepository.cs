@@ -24,9 +24,9 @@ namespace OELS.Repository.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public Task<User> GetByRoleAsync(Role role)
+        public async Task<User> GetByRoleAsync(Role role)
         {
-            return _context.Users.FirstOrDefaultAsync(u => u.Role == role);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Role == role);
         }
 
         public Task<IEnumerable<Certificate>> GetCertificatesAsync(Guid userId)
@@ -74,9 +74,9 @@ namespace OELS.Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> IsEmailExistsAsync(string email)
+        public async Task<bool> IsEmailExistsAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _context.Users.AnyAsync(u => u.Email == email);
         }
 
         public Task<bool> IsTeacherAsync(Guid userId)

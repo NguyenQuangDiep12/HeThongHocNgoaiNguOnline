@@ -17,7 +17,5 @@ namespace OELS.Core.DTOs.Auth
         [Required]
         [Compare("Password", ErrorMessage = "Mat khau xac nhan khong khop!")]
         public string ConfirmPassword { get; set; } = null!;
-        public Role Role { get; set; } = Role.STUDENT;
-
     }
 }

@@ -24,13 +24,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
         options =>
         {
-            options.MigrationsAssembly(Assembly.GetAssembly(typeof(ApplicationDbContext)).GetName().Name);
+            options.MigrationsAssembly(Assembly.GetAssembly(typeof(ApplicationDbContext))!.GetName().Name);
         });
 });
-
-
-var jwtSettings = builder.Configuration["JWT"];
-
 
 builder.Services.AddAuthentication(options =>
 {

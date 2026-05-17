@@ -35,6 +35,7 @@ namespace OELS.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            modelBuilder.Entity<Course>().HasQueryFilter(c => c.IsDeleted != true);
         }
     }
 }

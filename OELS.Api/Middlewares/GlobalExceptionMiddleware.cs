@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using OELS.Service.Exceptions;
+using System.Net;
 using System.Text.Json;
 
 namespace OELS.Api.Middlewares
@@ -11,7 +12,7 @@ namespace OELS.Api.Middlewares
 
         public GlobalExceptionMiddleware(
             RequestDelegate next, 
-            ILogger logger, 
+            ILogger<GlobalExceptionMiddleware> logger, 
             IHostEnvironment env)
         {
             _next = next;
@@ -34,7 +35,13 @@ namespace OELS.Api.Middlewares
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = ex switch
+            {
+                UnauthorizedException => (int)HttpStatusCode.Unauthorized,
+                DuplicateEmailException => (int)HttpStatusCode.Conflict,
+                _=> (int)HttpStatusCode.InternalServerError
+            };
+
             var errorDetails = new
             {
                 StatusCode = context.Response.StatusCode,

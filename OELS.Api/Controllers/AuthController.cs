@@ -13,14 +13,14 @@ namespace OELS.Api.Controllers
         {
             _authService = authService;
         }
-        [HttpGet("login")]
+        [HttpPost("login")]
         public async Task<ActionResult<AuthResponseDto>> Login([FromBody] LoginDto request)
         {
             var result = await _authService.LoginAsync(request);
             return Ok(result);
         }
         [HttpPost("register")]
-        public async Task<ActionResult<AuthResponseDto>> Register(RegisterDto request)
+        public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterDto request)
         {
             var result = await _authService.RegisterAsync(request);
             return Ok(result);
