@@ -34,8 +34,7 @@ namespace OELS.Repository.UnitOfWorks
         {
             _context = context;
         }
-
-        public IUserRepository Users 
+        public IUserRepository UserRepository 
             => _users ??= new UserRepository(_context);
 
         public ICourseRepository CourseRepository
@@ -80,8 +79,6 @@ namespace OELS.Repository.UnitOfWorks
         public ISectionRepository SectionRepository
             => _sections ??= new SectionRepository(_context);
 
-
-
         public int Commit()
         {
             return _context.SaveChanges();
@@ -93,7 +90,7 @@ namespace OELS.Repository.UnitOfWorks
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

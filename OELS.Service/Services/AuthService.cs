@@ -3,11 +3,6 @@ using OELS.Core.Repositories;
 using OELS.Core.Services;
 using OELS.Core.UnitOfWorks;
 using OELS.Service.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OELS.Service.Services
 {
@@ -16,6 +11,14 @@ namespace OELS.Service.Services
         private readonly IUserRepository _userRepository;
         private readonly ITokenService _tokenService;
         private readonly IUnitOfWork _uow;
+
+        public AuthService(IUserRepository userRepository, ITokenService tokenService, IUnitOfWork uow)
+        {
+            _userRepository = userRepository;
+            _tokenService = tokenService;
+            _uow = uow;
+        }
+
         public Task<LoginDto> LoginAsync(LoginDto request)
         {
             var user = _userRepository.GetByEmailAsync(request.Email);
@@ -27,6 +30,11 @@ namespace OELS.Service.Services
             // neu tim thay user
             // xac thuc password_hash
             
+        }
+
+        public Task RefreshToken(string OldToken)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<RegisterDto> RegisterAsync(RegisterDto request)

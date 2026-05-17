@@ -1,13 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using OELS.Repository;
-using Microsoft.Extensions.Configuration;
-using OELS.Core.Repositories;
-using OELS.Repository.Repositories;
-using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using OELS.Core.Repositories;
+using OELS.Core.Services;
+using OELS.Repository;
+using OELS.Repository.Repositories;
+using OELS.Service.Services;
+using System.Reflection;
 using System.Text;
-using OELS.Core.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,7 +86,9 @@ builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizQuestionRepository, QuizQuestionRepository>();
 builder.Services.AddScoped<ISectionRepository, SectionRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, >
+
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 builder.Services.AddAuthentication();

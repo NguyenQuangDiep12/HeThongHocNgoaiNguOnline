@@ -58,7 +58,7 @@ namespace OELS.Repository.Repositories
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            _dbSet.RemoveRange();
+            _dbSet.RemoveRange(entities);
         }
     }
 }

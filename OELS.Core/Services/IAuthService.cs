@@ -11,5 +11,6 @@ namespace OELS.Core.Services
     {
         Task<LoginDto> LoginAsync(LoginDto request);
         Task<RegisterDto> RegisterAsync(RegisterDto request);
+        Task RefreshToken(string OldToken);
     }
 }

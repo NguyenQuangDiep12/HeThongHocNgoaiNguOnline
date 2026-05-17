@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OELS.Core.DTOs
 {
-    public class UserResponseDto
+    public class UserProfileDto
     {
         public Guid Id { get; set; }
         public string FullName { get; set; } = null!;
