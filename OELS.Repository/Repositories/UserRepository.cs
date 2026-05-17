@@ -28,5 +28,60 @@ namespace OELS.Repository.Repositories
         {
             return _context.Users.FirstOrDefaultAsync(u => u.Role == role);
         }
+
+        public Task<IEnumerable<Certificate>> GetCertificatesAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Course>> GetEnrolledCoursesAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<decimal> GetLearningProgressAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<QuizAttempt>> GetQuizAttemptsAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Course>> GetTeacherCoursesAsync(Guid TeacherId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<decimal> GetTotalRevenueAsync(Guid TeacherId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalStudentsAsync(Guid TeacherId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> HasPurchasedCourseAsync(Guid userId, Guid CourseId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> IsAdminAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> IsEmailExistsAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> IsTeacherAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OELS.Core.Repositories;
 using OELS.Core.Services;
+using OELS.Core.UnitOfWorks;
 using OELS.Repository;
 using OELS.Repository.Repositories;
+using OELS.Repository.UnitOfWorks;
 using OELS.Service.Services;
 using System.Reflection;
 using System.Text;
@@ -24,7 +26,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.MigrationsAssembly(Assembly.GetAssembly(typeof(ApplicationDbContext)).GetName().Name);
         });
 });
-# region Authentication & Authorization
+
+
+var jwtSettings = builder.Configuration["JWT"];
+
+
 builder.Services.AddAuthentication(options =>
 {
     // Schema dung de xac thuc user tu request
@@ -68,8 +74,6 @@ builder.Services.AddAuthentication(options =>
         };
 });
 
-#endregion 
-
 // Dependencies Injection Service
 builder.Services.AddScoped<ICertificateRepository, CertificateRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
@@ -89,6 +93,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddAuthentication();

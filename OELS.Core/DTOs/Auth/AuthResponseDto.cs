@@ -1,4 +1,6 @@
-﻿namespace OELS.Core.DTOs.Auth
+﻿using OELS.Core.DTOs;
+
+namespace OELS.Core.DTOs.Auth
 {
     public class AuthResponseDto
     {
